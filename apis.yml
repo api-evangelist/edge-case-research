@@ -1,18 +1,57 @@
 aid: edge-case-research
 name: Edge Case Research
-description: 'Edge Case Research is a company surfaced via the API Evangelist harvest backlog (source:
-  secondary-market) and added to the network as a stub for full-pipeline profiling.'
+description: 'Edge Case Research (operating as "Edge Case", ecr.ai) is a Pittsburgh, Pennsylvania
+  company founded in 2013 that provides functional safety engineering, risk management and
+  safety-assurance software for autonomous and other "frontier technology" systems. Its
+  DevSafeOps methodology carries safety through the whole product lifecycle — hazard
+  identification in design, verified safety evidence in build, and continuous safety monitoring
+  in operations — and its nLoop live-safety-case platform assembles evidence from design,
+  simulation, test and field operations into an auditable, continuously updated safety case.
+  The company works across aerospace and defense, automotive and autonomous trucking, space,
+  oil and gas, and supply chain and logistics, and publishes the Open Autonomy Safety Case
+  framework as SACM XML on GitHub. Edge Case publishes no public product API or OpenAPI; the
+  only machine-readable surface reachable on its own host is the Wix-provided site MCP endpoint
+  advertised in its llms.txt.'
 url: https://raw.githubusercontent.com/api-evangelist/edge-case-research/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
 x-tier: stub
 x-tier-reason: harvest
+image: https://static.wixstatic.com/media/9347c4_84bea09e578d4f81b9a5a54b9ec29065%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/9347c4_84bea09e578d4f81b9a5a54b9ec29065%7Emv2.jpg
 specificationVersion: '0.20'
 created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
-apis: []
+- Safety
+- Functional Safety
+- Autonomous Systems
+- Robotics
+- Artificial Intelligence
+- Aerospace and Defense
+- Automotive
+- Risk Management
+- Assurance
+- Space
+- Model Context Protocol
+apis:
+- name: Edge Case Site MCP
+  description: 'The Model Context Protocol endpoint served on Edge Case''s own host and
+    advertised in its llms.txt. It is the Wix platform site MCP — it exposes site content,
+    business details, site search and Wix business-solution API access to agents rather than
+    any Edge Case product API. tools/list answers anonymously with nine tools carrying full
+    JSON Schema input contracts.'
+  humanURL: https://www.ecr.ai/llms.txt
+  baseURL: https://www.ecr.ai/_api/mcp
+  tags:
+  - MCP
+  - Model Context Protocol
+  - Site Content
+  properties:
+  - type: MCPServer
+    url: mcp/edge-case-research-mcp.yml
+  - type: LLMsTxt
+    url: llms/edge-case-research-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +59,35 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
+  url: https://www.ecr.ai/
+- type: Blog
+  url: https://www.ecr.ai/blog
+- type: GitHubOrganization
+  url: https://github.com/EdgeCaseResearch
+- type: Support
+  url: https://www.ecr.ai/contact
+- type: PrivacyPolicy
+  url: https://www.ecr.ai/privacy-policy
+- type: About
+  url: https://www.ecr.ai/our-story
+- type: Products
+  url: https://www.ecr.ai/product-services
+- type: Careers
+  url: https://www.ecr.ai/careers
+- type: LinkedIn
+  url: https://www.linkedin.com/company/edge-case-technology/
+- type: Twitter
+  url: https://x.com/edgecaseres
+- type: SecondaryMarket
   url: https://forgeglobal.com/edge-case-research_stock/
+- type: MCPServer
+  url: mcp/edge-case-research-mcp.yml
+- type: LLMsTxt
+  url: llms/edge-case-research-llms.txt
+- type: DomainSecurity
+  url: security/edge-case-research-domain-security.yml
+x-enrichment:
+  date: '2026-08-04'
+  status: enriched
+  artifacts_added: 5
+  pass: local-v1

@@ -1,0 +1,59 @@
+generated: '2026-08-04'
+method: probed
+source: live HTTP probes
+host: https://www.ecr.ai
+note: >-
+  ecr.ai is a Wix-hosted site. Every unknown path under /.well-known/ answers HTTP 400 with an
+  HTML body (the Wix catch-all), not 404 — recorded as observed. No well-known discovery document
+  is published. No hit was accepted, so no WellKnown, SecurityTxt or AgentCard pointer is wired
+  into apis.yml.
+documents:
+- path: /.well-known/security.txt
+  status: 400
+  content_type: text/html; charset=UTF-8
+  found: false
+- path: /.well-known/openid-configuration
+  status: 400
+  content_type: text/html; charset=UTF-8
+  found: false
+- path: /.well-known/oauth-authorization-server
+  status: 400
+  content_type: text/html; charset=UTF-8
+  found: false
+- path: /.well-known/api-catalog
+  status: 400
+  content_type: text/html; charset=UTF-8
+  found: false
+- path: /.well-known/ai-plugin.json
+  status: 400
+  content_type: text/html; charset=UTF-8
+  found: false
+- path: /.well-known/agent-card.json
+  status: 400
+  content_type: text/html; charset=UTF-8
+  found: false
+- path: /.well-known/agent.json
+  status: 400
+  content_type: text/html; charset=UTF-8
+  found: false
+other_probes:
+- path: /llms.txt
+  status: 200
+  content_type: text/plain; charset=utf-8
+  found: true
+  file: ../llms/edge-case-research-llms.txt
+- path: /robots.txt
+  status: 200
+  found: true
+- path: /sitemap.xml
+  status: 200
+  found: true
+- path: /openapi.json
+  status: 400
+  found: false
+- path: /swagger.json
+  status: 400
+  found: false
+- path: /api-docs
+  status: 404
+  found: false
