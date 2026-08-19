@@ -7,12 +7,11 @@ server:
   transport: http
   url: https://www.ecr.ai/_api/mcp
   authentication: none
-  note: >-
-    This is the Wix platform "site MCP" served from Edge Case's own host and advertised by
-    Edge Case's llms.txt. It is NOT an Edge Case product API — it exposes public site content,
-    business details, site search, and generic Wix business-solution API access (blog, bookings,
-    ecommerce, events). Edge Case publishes no OpenAPI and no product API of its own, so there is
-    no REST surface to crosswalk these tools against.
+  note: This is the Wix platform "site MCP" served from Edge Case's own host and advertised by Edge Case's
+    llms.txt. It is NOT an Edge Case product API — it exposes public site content, business details, site
+    search, and generic Wix business-solution API access (blog, bookings, ecommerce, events). Edge Case
+    publishes no OpenAPI and no product API of its own, so there is no REST surface to crosswalk these
+    tools against.
   platform: Wix Site MCP
   platform_docs: https://dev.wix.com/docs/develop-websites/articles/get-started/about-the-wix-site-mcp
 x-evidence:
@@ -38,72 +37,111 @@ site_capabilities:
   - Events App — list and query events, RSVP to an event
 tools:
 - name: GetBusinessDetails
-  description: Returns business and site details (timezone, email, phone, address, site name,
-    business name, description, schedule) plus the site features available to other tools.
+  description: Returns business and site details (timezone, email, phone, address, site name, business
+    name, description, schedule) plus the site features available to other tools.
   parameters: []
   read_only: true
 - name: SearchInSite
   description: Full-text search across the site for information.
   parameters:
-  - {name: searchTerm, required: true, type: string}
+  - name: searchTerm
+    required: true
+    type: string
   read_only: true
 - name: SearchSiteApiDocs
-  description: Searches the API documentation for the Wix business solutions installed on this
-    site and explains how to call them.
+  description: Searches the API documentation for the Wix business solutions installed on this site and
+    explains how to call them.
   parameters:
-  - {name: searchTerm, required: true, type: string}
+  - name: searchTerm
+    required: true
+    type: string
   read_only: true
 - name: GenerateVisitorToken
-  description: Creates a visitor session and returns a visitor access token; prerequisite for
-    CallWixSiteAPI and ExecuteWixAPI.
+  description: Creates a visitor session and returns a visitor access token; prerequisite for CallWixSiteAPI
+    and ExecuteWixAPI.
   parameters: []
   read_only: false
 - name: CallWixSiteAPI
-  description: Calls a Wix API method on the visitor's behalf (query site data, book an
-    appointment, start a purchase).
+  description: Calls a Wix API method on the visitor's behalf (query site data, book an appointment, start
+    a purchase).
   parameters:
-  - {name: visitorToken, required: true, type: string}
-  - {name: url, required: true, type: string, format: uri}
-  - {name: method, required: true, type: string}
-  - {name: body, required: false, type: string}
+  - name: visitorToken
+    required: true
+    type: string
+  - name: url
+    required: true
+    type: string
+    format: uri
+  - name: method
+    required: true
+    type: string
+  - name: body
+    required: false
+    type: string
   read_only: false
 - name: ExecuteWixAPI
-  description: Runs a sandboxed JavaScript async function against the Wix REST API on the
-    visitor's behalf, chaining multiple calls in one step.
+  description: Runs a sandboxed JavaScript async function against the Wix REST API on the visitor's behalf,
+    chaining multiple calls in one step.
   parameters:
-  - {name: code, required: true, type: string}
-  - {name: reason, required: true, type: string}
-  - {name: hasMutations, required: true, type: boolean}
-  - {name: sourceDocUrls, required: true, type: array}
-  - {name: visitorToken, required: true, type: string}
+  - name: code
+    required: true
+    type: string
+  - name: reason
+    required: true
+    type: string
+  - name: hasMutations
+    required: true
+    type: boolean
+  - name: sourceDocUrls
+    required: true
+    type: array
+  - name: visitorToken
+    required: true
+    type: string
   read_only: false
   destructive: true
 - name: BrowseWixRESTDocsMenu
   description: Browses the Wix REST API documentation menu hierarchy.
   parameters:
-  - {name: menuUrl, required: false, type: string}
-  - {name: reason, required: true, type: string}
+  - name: menuUrl
+    required: false
+    type: string
+  - name: reason
+    required: true
+    type: string
   read_only: true
 - name: ReadFullDocsArticle
   description: Fetches a complete article from the Wix developer documentation portal.
   parameters:
-  - {name: articleUrl, required: true, type: string, format: uri}
+  - name: articleUrl
+    required: true
+    type: string
+    format: uri
   read_only: true
 - name: ReadFullDocsMethodSchema
   description: Fetches the full request/response schema for a Wix API method.
   parameters:
-  - {name: articleUrl, required: true, type: string, format: uri}
-  - {name: reason, required: true, type: string}
+  - name: articleUrl
+    required: true
+    type: string
+    format: uri
+  - name: reason
+    required: true
+    type: string
   read_only: true
 observations:
-- >-
-  Several tool descriptions carry an <agent-mandatory-instructions> block instructing the calling
-  agent that it "MUST READ AND FOLLOW" them. These are Wix platform-authored, not Edge Case
-  authored, but they are served from ecr.ai and are worth recording as an agent-instruction
-  surface embedded in a tool description.
-- >-
-  ExecuteWixAPI is annotated readOnlyHint:false / destructiveHint:true and accepts arbitrary
-  JavaScript executed against the Wix REST API on a visitor's behalf.
-- >-
-  No tool crosswalk is emitted: there is no Edge Case OpenAPI or GraphQL surface to bind these
-  tools to.
+- Several tool descriptions carry an <agent-mandatory-instructions> block instructing the calling agent
+  that it "MUST READ AND FOLLOW" them. These are Wix platform-authored, not Edge Case authored, but they
+  are served from ecr.ai and are worth recording as an agent-instruction surface embedded in a tool description.
+- ExecuteWixAPI is annotated readOnlyHint:false / destructiveHint:true and accepts arbitrary JavaScript
+  executed against the Wix REST API on a visitor's behalf.
+- 'No tool crosswalk is emitted: there is no Edge Case OpenAPI or GraphQL surface to bind these tools
+  to.'
+deployment:
+  mode: remote
+  endpoint: https://www.ecr.ai/_api/mcp
+  verified: probed
+  probe: live
+  tools: 9
+  checked: '2026-08-12'
+  source: catalog MCP census
