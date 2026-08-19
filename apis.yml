@@ -18,7 +18,7 @@ x-source: harvest:secondary-market
 x-tier: stub
 x-tier-reason: harvest
 image: https://static.wixstatic.com/media/9347c4_84bea09e578d4f81b9a5a54b9ec29065%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/9347c4_84bea09e578d4f81b9a5a54b9ec29065%7Emv2.jpg
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-08-04'
 modified: '2026-08-04'
 tags:
