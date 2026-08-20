@@ -33,6 +33,19 @@ tags:
 - Risk Management
 - Assurance
 - Space
+- MCP
+tags_raw:
+- Company
+- Safety
+- Functional Safety
+- Autonomous Systems
+- Robotics
+- Artificial Intelligence
+- Aerospace and Defense
+- Automotive
+- Risk Management
+- Assurance
+- Space
 - Model Context Protocol
 apis:
 - name: Edge Case Site MCP
@@ -44,6 +57,9 @@ apis:
   humanURL: https://www.ecr.ai/llms.txt
   baseURL: https://www.ecr.ai/_api/mcp
   tags:
+  - MCP
+  - Site Content
+  tags_raw:
   - MCP
   - Model Context Protocol
   - Site Content
