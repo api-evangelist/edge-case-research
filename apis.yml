@@ -17,6 +17,17 @@ x-type: company
 x-source: harvest:secondary-market
 x-tier: stub
 x-tier-reason: harvest
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - none
+  generated: '2026-08-28'
+  method: derived
 image: https://static.wixstatic.com/media/9347c4_84bea09e578d4f81b9a5a54b9ec29065%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/9347c4_84bea09e578d4f81b9a5a54b9ec29065%7Emv2.jpg
 specificationVersion: '0.23'
 created: '2026-08-04'
